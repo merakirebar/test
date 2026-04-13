@@ -1,0 +1,4 @@
+/* Reset default Vite styles - we use App.css instead */
+:root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
