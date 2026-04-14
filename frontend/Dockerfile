@@ -1,20 +1,19 @@
-# --- Stage 1: Build React app ---
 # ---------- Stage 1: Build ----------
 FROM node:18-alpine AS build
 
 WORKDIR /app
 
+# Copy only dependency files
 COPY package*.json ./
 
+# Clean install
 RUN npm install
 
+# Copy remaining files
 COPY . .
 
-# Fix permission issue
-RUN chmod -R 755 node_modules
-
-# Use npx explicitly
-RUN npx vite build
+# Build using npm script (correct for your package.json)
+RUN npm run build
 
 
 # ---------- Stage 2: Nginx ----------
