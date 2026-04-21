@@ -9,7 +9,12 @@ import axios from 'axios';
 
 // Get the API URL from environment variables
 // Vite exposes env vars with the VITE_ prefix
-const API_URL = import.meta.env.VITE_API_URL || 'http://backend:5000/api';
+const API_URL = import.meta.env.VITE_API_URL;
+if (!API_URL) {
+  throw new Error("VITE_API_URL is not defined in .env");
+}
+
+console.log("Using API URL:", API_URL);
 
 // Create an axios instance with the base URL
 const api = axios.create({
